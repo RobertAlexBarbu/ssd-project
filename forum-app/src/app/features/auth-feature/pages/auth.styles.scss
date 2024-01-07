@@ -1,0 +1,27 @@
+
+button{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.loading {
+  background-color: #3B82F670;
+  border-color: #3B82F670;
+}
+.question {
+  color: var(--text-gray);
+  margin-bottom: 1rem;
+}
+.help {
+  text-align: center;
+}
+.card {
+  max-width: 30rem;
+}
+.google {
+  width: 1.2rem;
+  margin-right: 0.5rem;
+}
+.auth-button {
+  color: var(--base-text);
+}

@@ -1,0 +1,76 @@
+<div class="navbar" ontouchstart="">
+  <button
+    [routerLinkActiveOptions]="{exact: true}"
+    routerLinkActive="active-link"
+    pButton
+    class="p-button-sm p-button-text"
+    routerLink="/"
+    (click)="closeMenu()">
+    <ng-icon name="jamHomeF"></ng-icon>
+    Home
+  </button>
+  <button
+    routerLinkActive="active-link"
+    pButton
+    class="p-button-sm p-button-text"
+    routerLink="/forums"
+    (click)="closeMenu()">
+    <ng-icon name="jamMessagesF"></ng-icon>
+    Forum
+  </button>
+  <button
+    *ngIf="authState | isAuth"
+    routerLinkActive="active-link"
+    pButton
+    class="p-button p-button-sm p-button-text"
+    [routerLink]="['/profile', authState.username]"
+    (click)="closeMenu()">
+    <ng-icon name="jamUser"></ng-icon>
+    Profile
+  </button>
+  <button
+    *ngIf="authState | isAdmin"
+    routerLinkActive="active-link"
+    pButton
+    class="p-button p-button-sm p-button-text"
+    routerLink="/admin"
+    (click)="closeMenu()">
+    <ng-icon name="jamPieChartF"></ng-icon>
+    Dashboard
+  </button>
+
+  <div class="separator"></div>
+  <button
+    *ngIf="authState | isAuth"
+    pButton
+    class="p-button-sm p-button-text logout p-button"
+    (click)="logout(); closeMenu()">
+    Log Out
+  </button>
+  <button
+    *ngIf="!(authState | isAuth)"
+    routerLinkActive="active-link"
+    pButton
+    class="p-button-sm p-button-text login mobile"
+    routerLink="/auth/login"
+    (click)="closeMenu()">
+    Log in
+  </button>
+  <button
+    *ngIf="!(authState | isAuth)"
+    routerLinkActive="active-link"
+    pButton
+    class="p-button-text p-button-sm signup"
+    routerLink="/auth/signup"
+    (click)="closeMenu()">
+    Sign up
+  </button>
+  <button
+    *ngIf="!(authState | isAuth)"
+    pButton
+    class="p-button-sm login desktop-btn login"
+    routerLink="/auth/login"
+    (click)="closeMenu()">
+    Log in
+  </button>
+</div>

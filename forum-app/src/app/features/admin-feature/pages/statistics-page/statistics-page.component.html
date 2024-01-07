@@ -1,0 +1,37 @@
+<div class="pie mt-5">
+  <div class="text-xl font-bold">Post</div>
+  <div class="text-gray-400">The distribution of posts per forum</div>
+  <div class="separator"></div>
+  <ng-container *ngIf="data$ | async as pieData">
+    <p-chart
+      width="min(100%, 500px)"
+      type="pie"
+      [data]="pieData"
+      [options]="options"></p-chart>
+  </ng-container>
+</div>
+<div class="pie mt-5">
+  <div class="text-xl font-bold">Comment</div>
+  <div class="text-gray-400">The distribution of comments per forum</div>
+  <div class="separator"></div>
+  <ng-container *ngIf="data3$ | async as pieData3">
+    <p-chart
+      width="min(100%, 1000px)"
+      type="bar"
+      [data]="pieData3"
+      [options]="options3"></p-chart>
+  </ng-container>
+</div>
+<div class="pie mt-5">
+  <div class="text-xl font-bold">Activity</div>
+  <div class="text-gray-400">The distribution of likes per forum</div>
+  <div class="separator"></div>
+
+  <ng-container *ngIf="data2$ | async as pieData2">
+    <p-chart
+      width="min(100%, 1000px)"
+      type="bar"
+      [data]="pieData2"
+      [options]="options2"></p-chart>
+  </ng-container>
+</div>

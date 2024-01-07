@@ -1,0 +1,16 @@
+<div class="modal">
+  <div class="modal-content">
+    <div class="header">
+      <button
+        pButton
+        class="nav p-button-sm p-button-text close-menu"
+        icon="pi"
+        (click)="closeMenu()">
+        <ng-icon name="jamClose" size="2.5rem"></ng-icon>
+      </button>
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
+    </div>
+  </div>
+</div>

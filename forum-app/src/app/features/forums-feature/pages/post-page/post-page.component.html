@@ -1,0 +1,47 @@
+<div class="mt-5">
+  <ng-container *ngIf="post$ | async as post">
+    <ng-container *ngIf="authState$ | async as authState">
+      <div class="post">
+        <div class="buttons">
+          <button
+            *ngIf="authState.id === post.user.id"
+            routerLink="/forums/{{post.forum.id}}/posts/edit/{{post.id}}"
+            pButton
+            class="p-button-sm nav p-button p-button-text"
+            pTooltip="Edit Post"
+            tooltipPosition="top">
+            <ng-icon name="jamPencilF"></ng-icon>
+          </button>
+          <button
+            *ngIf="authState | isAdmin"
+            (click)="deletePost(post)"
+            pButton
+            class="p-button-sm nav p-button p-button-danger p-button-text"
+            tooltipPosition="top"
+            pTooltip="Delete Post">
+            <ng-icon name="jamTrashF"></ng-icon>
+          </button>
+        </div>
+        <div class="header">
+          <span class="category" *ngIf="post.category"
+            >{{post.category.name}}</span
+          ><span class="title">{{post.title}}</span>
+        </div>
+        <div class="top">
+          <div
+            class="clickable"
+            [routerLink]="['/profile', post.user.username]">
+            {{post.user.username}}
+          </div>
+          <div class="sphere"></div>
+          <div>{{post.createdAt | timeAgo}}</div>
+        </div>
+        <div class="content">{{post.content}}</div>
+        <app-like [authState]="authState" [post]="post"></app-like>
+      </div>
+      <app-post-comments
+        [authState]="authState"
+        [post]="post"></app-post-comments>
+    </ng-container>
+  </ng-container>
+</div>

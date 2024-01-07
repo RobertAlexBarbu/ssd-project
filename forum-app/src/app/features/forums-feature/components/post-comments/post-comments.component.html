@@ -1,0 +1,28 @@
+<ng-container *ngIf="comments$ | async as comments">
+  <div class="comments mt-5">
+    <ng-container *ngFor="let comment of comments">
+      <app-comment
+        [authState]="authState"
+        (delete)="deleteComment($event)"
+        [comment]="comment"></app-comment>
+    </ng-container>
+  </div>
+  <div class="create-comment">
+    <app-error [errorMessage]="error$ | async"></app-error>
+    <div class="mt-3 mini-title">Comment</div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="input">
+        <textarea
+          rows="3"
+          id="comment"
+          [formControl]="comment"
+          cols="30"
+          pInputTextarea
+          [autoResize]="true"></textarea>
+      </div>
+      <div class="btn-container">
+        <button pButton class="smaller p-button p-button-text">Post</button>
+      </div>
+    </form>
+  </div>
+</ng-container>

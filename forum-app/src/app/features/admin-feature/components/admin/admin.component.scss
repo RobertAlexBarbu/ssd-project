@@ -1,0 +1,16 @@
+.admin {
+  display: flex;
+  max-width: 30rem;
+  border: 1px solid var(--border);
+  padding: 0.3rem;
+  align-items: center;
+  border-radius: 5px;
+  column-gap: 10px;
+  flex-wrap: wrap;
+}
+.username {
+  font-weight: 600;
+}
+button {
+  margin-left: auto;
+}

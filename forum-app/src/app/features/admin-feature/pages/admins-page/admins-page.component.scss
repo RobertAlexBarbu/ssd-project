@@ -1,0 +1,19 @@
+.p-inputgroup {
+  max-width: 30rem;
+}
+.admins {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  flex-grow: 1;
+}
+.page {
+  max-width: 30rem;
+  margin: auto;
+}
+.title {
+  flex-grow: 1;
+}
+.text {
+  margin-top: 0.5rem;
+}

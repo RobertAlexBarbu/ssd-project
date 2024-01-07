@@ -1,0 +1,32 @@
+<div class="page">
+  <div class="title mt-5">
+    <app-error [errorMessage]="error$ | async"></app-error>
+    <div class="p-inputgroup mt-1 mb-1">
+      <input
+        [formControl]="addAdminForm"
+        id="category"
+        type="text"
+        pInputText
+        placeholder="Add new admin" />
+      <button type="button" pButton (click)="addAdmin()">
+        Add
+        <ng-icon name="jamPlus" size="1.3rem"></ng-icon>
+      </button>
+    </div>
+    <div class="error">
+      <ng-container *ngIf="addAdminForm.errors && addAdminForm.dirty">
+        <ng-container *ngIf="addAdminForm.errors['required']">
+          This field is required
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+  <div class="admins">
+    <div class="text">Existing admins:</div>
+    <ng-container *ngIf="admins$ | async as admins">
+      <ng-container *ngFor="let admin of admins">
+        <app-admin (demote)="demoteAdmin($event)" [admin]="admin"></app-admin>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

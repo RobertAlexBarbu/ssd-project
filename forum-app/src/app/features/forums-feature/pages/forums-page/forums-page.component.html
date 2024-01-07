@@ -1,0 +1,100 @@
+<div class="card" ontouchstart="" *ngIf="authState$ | async as authState">
+  <div class="header">
+    <div class="title">Forums</div>
+    <button
+      *ngIf="authState | isAdmin"
+      (click)="openAddModal()"
+      pButton
+      class="smaller p-button-text p-button-sm smaller">
+      <ng-icon name="jamPlus"></ng-icon>
+      New Forum
+    </button>
+  </div>
+  <ng-container *ngIf="forums$ | async as forums">
+    <ng-container *ngFor="let forum of forums">
+      <app-forum
+        [authState]="authState"
+        [forum]="forum"
+        (deleteForum)="openDeleteModal($event)"></app-forum>
+    </ng-container>
+  </ng-container>
+</div>
+
+<app-modal [(isVisible)]="addForumModal">
+  <form class="modal-form" (ngSubmit)="addForum()">
+    <h2>Create forum</h2>
+    <div class="input-last">
+      <label for="name">Forum name</label>
+      <input
+        [formControl]="addForumForm"
+        pInputText
+        type="text"
+        id="name"
+        placeholder="Forum name" />
+      <div class="error">
+        <ng-container *ngIf="addForumForm.errors && addForumForm.dirty">
+          <ng-container *ngIf="addForumForm.errors['required']">
+            This field is required
+          </ng-container>
+          <ng-container
+            *ngIf="!addForumForm.errors['required'] && addForumForm.errors['maxlength']">
+            Maximum 32 characters
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="top-error">{{error$ | async}}</div>
+    <div class="double-submit">
+      <button
+        type="button"
+        (click)="closeAddModal()"
+        pButton
+        class="p-button p-button-outlined">
+        Cancel
+      </button>
+      <button
+        pButton
+        class="p-button"
+        [class.loading]="loading"
+        [loading]="loading">
+        <ng-container *ngIf="!loading">
+          <div>Create</div>
+        </ng-container>
+      </button>
+    </div>
+  </form>
+</app-modal>
+
+<app-modal [(isVisible)]="deleteForumModal">
+  <form class="modal-form" (ngSubmit)="deleteForum()">
+    <h2>Delete forum</h2>
+    <ng-container *ngIf="toBeDeletedForum">
+      <div class="details-text">
+        Are you sure you want to delete
+        <span class="forum-name">{{toBeDeletedForum.name}}</span>?
+      </div>
+      <div class="warning-text input-last">
+        ⚠ All related posts and comments will also be deleted
+      </div>
+    </ng-container>
+    <div class="top-error">{{error$ | async}}</div>
+    <div class="double-submit">
+      <button
+        type="button"
+        (click)="closeDeleteModal()"
+        pButton
+        class="p-button p-button-outlined">
+        Cancel
+      </button>
+      <button
+        pButton
+        class="p-button p-button-danger"
+        [class.loading]="loading"
+        [loading]="loading">
+        <ng-container *ngIf="!loading">
+          <div>Delete</div>
+        </ng-container>
+      </button>
+    </div>
+  </form>
+</app-modal>

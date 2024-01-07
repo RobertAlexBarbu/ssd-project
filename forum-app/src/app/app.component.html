@@ -1,3 +1,6 @@
-<button pButton>Hey</button>
-<div>hey</div>
-<div class="text-3xl font-bold underline">Buna</div>
+<ng-container *ngIf="authState$ | async as authState">
+  <app-header [authState]="authState" [check$]="check$"></app-header>
+  <div class="main">
+    <router-outlet></router-outlet>
+  </div>
+</ng-container>

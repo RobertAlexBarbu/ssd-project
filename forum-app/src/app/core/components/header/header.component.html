@@ -1,0 +1,20 @@
+<div class="wrapper">
+  <div class="header">
+    <div class="name">Forumly</div>
+    <div class="desktop">
+      <app-navbar [authState]="authState" *ngIf="check$ | async"></app-navbar>
+    </div>
+    <div class="mobile">
+      <button
+        pButton
+        class="nav p-button-sm p-button-text"
+        icon="pi"
+        (click)="openMenu()">
+        <ng-icon name="jamAlignJustify" size="2.5rem"></ng-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<app-modal [(isVisible)]="isVisible">
+  <app-navbar [authState]="authState" (navigate)="closeMenu()"></app-navbar>
+</app-modal>

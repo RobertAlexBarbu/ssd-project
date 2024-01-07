@@ -1,0 +1,48 @@
+<div class="forum">
+  <div class="forum-icon-container">
+    <ng-icon class="forum-icon" name="jamMessagesF" size="2.5rem"></ng-icon>
+  </div>
+  <div class="forum-info">
+    <div class="name clickable" [routerLink]="['', 'forums', forum.id]">
+      {{forum.name}}
+    </div>
+    <div class="data">
+      <div class="data-group">
+        <div class="info">
+          <ng-icon name="jamMessageF" size="0.8rem"></ng-icon>
+          <div>{{forum.posts.length}} discussions</div>
+        </div>
+      </div>
+      <div class="data-group desktop">
+        <div class="info">
+          <div *ngIf="forum.posts.length; else noDisc">
+            Latest: {{forum.posts[0].createdAt | timeAgo}}
+          </div>
+          <ng-template #noDisc>
+            <div>Latest: Nothing yet</div>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="btn">
+    <button
+      *ngIf="authState | isAdmin"
+      [routerLink]="['', 'forums', 'edit', forum.id]"
+      pButton
+      class="p-button-text p-button nav"
+      pTooltip="Edit"
+      tooltipPosition="right">
+      <ng-icon name="jamPencilF"></ng-icon>
+    </button>
+    <button
+      *ngIf="authState | isAdmin"
+      pButton
+      (click)="delete()"
+      class="p-button-text p-button p-button-danger nav"
+      pTooltip="Delete"
+      tooltipPosition="right">
+      <ng-icon name="jamTrashF"></ng-icon>
+    </button>
+  </div>
+</div>

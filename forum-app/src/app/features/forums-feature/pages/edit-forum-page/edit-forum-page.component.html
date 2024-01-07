@@ -1,0 +1,71 @@
+<div class="card" ontouchstart="">
+  <form (ngSubmit)="onSubmit()">
+    <h2>Edit forum</h2>
+    <div class="input">
+      <label for="name">Forum name</label>
+      <input [formControl]="forumName" pInputText type="text" id="name" />
+      <div class="error">
+        <ng-container *ngIf="forumName.errors">
+          <ng-container *ngIf="forumName.errors['required']">
+            This field is required
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="separator"></div>
+    <div class="error"></div>
+    <div class="categories">
+      <div class="subtitle">Category</div>
+      <ng-container *ngIf="categories$ | async as categories">
+        <div *ngFor="let cate of categories; let i = index">
+          <div class="category">
+            <div class="text">{{cate.name}}</div>
+            <div class="btns">
+              <button
+                pButton
+                (click)="deleteCategory(cate, i)"
+                type="button"
+                class="nav p-button p-button-text p-button-danger">
+                <ng-icon name="jamTrashF"></ng-icon>
+              </button>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+    <div class="error"></div>
+    <div class="input-last">
+      <label for="category">Add category</label>
+      <div class="p-inputgroup">
+        <input
+          [formControl]="categoryName"
+          id="category"
+          type="text"
+          pInputText
+          placeholder="Category name" />
+        <button type="button" pButton (click)="addCategory()">
+          Add
+          <ng-icon name="jamPlus" size="1.3rem"></ng-icon>
+        </button>
+      </div>
+      <div class="error">
+        <ng-container *ngIf="categoryName.errors && categoryName.dirty">
+          <ng-container *ngIf="categoryName.errors['required']">
+            This field is required
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="top-error">{{errors$ | async}}</div>
+    <div class="double-submit">
+      <button
+        pButton
+        class="p-button p-button-outlined"
+        type="button"
+        routerLink="../..">
+        Cancel
+      </button>
+      <button pButton class="p-button">Save</button>
+    </div>
+  </form>
+</div>

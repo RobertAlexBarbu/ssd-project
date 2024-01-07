@@ -1,0 +1,22 @@
+.top {
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  column-gap: 0.3rem;
+  display: flex;
+  align-items: center;
+}
+.comment {
+  padding: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: var(--border-radius);
+  margin-bottom: 1rem;
+  background-color: var(--base);
+}
+.content {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+}
+button {
+  margin-left: auto;
+}

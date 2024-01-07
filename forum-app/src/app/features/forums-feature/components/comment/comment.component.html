@@ -1,0 +1,22 @@
+<div class="comment">
+  <div class="top">
+    <ng-container *ngIf="comment.createdAt">
+      <div class="clickable" [routerLink]="['/profile', comment.user.username]">
+        {{comment.user.username}}
+      </div>
+      <div class="sphere"></div>
+      <div>{{comment.createdAt | timeAgo}}</div>
+    </ng-container>
+  </div>
+  <div class="content">
+    <div>{{comment.content}}</div>
+    <button
+      *ngIf="authState | isAdmin"
+      (click)="onDelete()"
+      pTooltip="Delete"
+      pButton
+      class="nav p-button p-button-sm p-button-text p-button-danger">
+      <ng-icon name="jamTrashF"></ng-icon>
+    </button>
+  </div>
+</div>

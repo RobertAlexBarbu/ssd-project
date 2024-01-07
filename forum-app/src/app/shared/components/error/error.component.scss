@@ -1,0 +1,8 @@
+div{
+  font-size: 0;
+  transition: font-size .2s;
+  color: var(--error)
+}
+div.reveal {
+  font-size: 0.9rem;
+}

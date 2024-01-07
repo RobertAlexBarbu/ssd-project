@@ -1,0 +1,12 @@
+<div class="admin">
+  <div class="username">{{admin.username}}</div>
+  <div class="sphere"></div>
+  <div>{{admin.email}}</div>
+  <button
+    (click)="demoteAdmin()"
+    pTooltip="Demote"
+    pButton
+    class="nav p-button p-button-sm p-button-text p-button-danger">
+    <ng-icon name="jamShieldCloseF"></ng-icon>
+  </button>
+</div>

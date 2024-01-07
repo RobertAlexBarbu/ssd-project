@@ -1,0 +1,12 @@
+<button *ngIf="!liked" class="likes clickable" (click)="likePost()">
+  <ng-container>
+    <ng-icon name="jamArrowSquareUp" size="1.2rem"></ng-icon>
+    {{likes$ | async}}
+  </ng-container>
+</button>
+<button *ngIf="liked" class="likes clickable liked" (click)="dislikePost()">
+  <ng-container>
+    <ng-icon name="jamArrowSquareUpF" size="1.2rem"></ng-icon>
+    {{likes$ | async}}
+  </ng-container>
+</button>

@@ -1,0 +1,74 @@
+<div class="card" ontouchstart="">
+  <ng-container *ngIf="forum$ | async as forumWithCategories">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2>Edit post</h2>
+      <app-error [errorMessage]="error$ | async"></app-error>
+      <ng-container *ngIf="forumWithCategories.categories.length > 0">
+        <div class="input mt-3">
+          <label for="category">Category</label>
+          <p-dropdown
+            placeholder="Category"
+            [showClear]="true"
+            id="category"
+            formControlName="category"
+            [options]="forumWithCategories.categories"
+            optionLabel="name"
+            optionValue="id"></p-dropdown>
+          <div class="error"></div>
+        </div>
+      </ng-container>
+      <div class="input">
+        <label for="title">Title</label>
+        <input
+          pInputText
+          type="text"
+          id="title"
+          formControlName="title"
+          placeholder="Title" />
+        <div class="error">
+          <ng-container *ngIf="form.controls['title'] as title">
+            <ng-container *ngIf="title.errors && title.dirty">
+              <ng-container *ngIf="title.errors['required']">
+                This field is required
+              </ng-container>
+              <ng-container
+                *ngIf="!title.errors['required'] && title.errors['maxlength']">
+                Max length is 32
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="input-last">
+        <label for="content">Content</label>
+        <textarea
+          rows="5"
+          id="content"
+          formControlName="content"
+          cols="30"
+          pInputTextarea
+          [autoResize]="true"></textarea>
+        <div class="error">
+          <ng-container *ngIf="form.controls['content'] as content">
+            <ng-container *ngIf="content.errors && content.dirty">
+              <ng-container *ngIf="content.errors['required']">
+                This field is required
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+      <div class="top-error"></div>
+      <div class="double-submit">
+        <button
+          pButton
+          class="p-button p-button-outlined"
+          type="button"
+          routerLink="../../{{id}}">
+          Cancel
+        </button>
+        <button pButton class="p-button">Save</button>
+      </div>
+    </form>
+  </ng-container>
+</div>

@@ -1,0 +1,15 @@
+.likes, .comments {
+  font-weight: 600;
+  align-items: center;
+  display: flex;
+  column-gap: 0.2rem;
+  font-size: 0.9rem;
+}
+.liked {
+  color: coral;
+}
+button {
+  padding: 0;
+  border: none;
+  background-color: transparent;
+}

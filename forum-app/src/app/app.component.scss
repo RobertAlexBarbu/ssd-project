@@ -1,0 +1,22 @@
+
+app-header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+}
+.main {
+  margin-top: 4rem;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@media (min-width: 768px) {
+  .main {
+    padding: 2rem 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,25 @@
+.top {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+  flex-wrap: wrap;
+}
+h3 {
+  margin: 0 1rem 0 0;
+}
+
+
+.active-link.p-button.p-element {
+  background-color: rgba(59, 130, 246, .10) !important;
+}
+.card {
+  max-width: 70rem;
+  transition: height 2s;
+}
+@media (min-width: 768px) {
+  .card {
+    padding-left: 8rem;
+    padding-right: 8rem;
+    padding-bottom: 3rem;
+  }
+}

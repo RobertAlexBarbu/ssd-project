@@ -1,0 +1,45 @@
+.card2 {
+  max-width: 50rem;
+}
+.category {
+  font-weight: 500;
+  font-size: 0.9rem;
+  background-color: var(--primary-color);
+  color: var(--base);
+  padding: 0.3rem;
+  border-radius: var(--border-radius);
+  margin-right: 0.5rem;
+  position: relative;
+  bottom: 0.20rem;
+}
+.post {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  white-space: pre-line;
+}
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  word-break: break-word;
+}
+@media (min-width: 768px) {
+  .card2 {
+    padding: 0 7rem;
+  }
+}
+.top {
+  display: flex;
+  align-items: center;
+  color: var(--text-gray);
+  font-size: 0.9rem;
+  column-gap: 0.3rem;
+}
+.liked {
+  color: coral;
+}
+
+
+.buttons {
+  display: flex;
+}

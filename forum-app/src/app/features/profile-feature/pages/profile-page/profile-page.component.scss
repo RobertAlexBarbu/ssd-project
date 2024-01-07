@@ -1,0 +1,22 @@
+
+.page {
+  max-width: 40rem;
+  margin: auto;
+}
+  .card {
+    max-width: 70rem;
+}
+.profile {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+
+@media (min-width: 768px) {
+  .profile {
+    justify-content: start;
+    align-items: center;
+  }
+}

@@ -1,0 +1,101 @@
+<div class="card" ontouchstart="">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Sign up</h2>
+    <app-error [errorMessage]="error$ | async"></app-error>
+    <div class="input mt-4">
+      <label for="email">Email</label>
+      <input
+        placeholder="Email"
+        id="email"
+        type="email"
+        pInputText
+        formControlName="email" />
+      <div class="error">
+        <ng-container *ngIf="form.get('email') as email">
+          <ng-container *ngIf="email.dirty && email.errors">
+            <ng-container *ngIf="email.errors['required']">
+              This field is required
+            </ng-container>
+            <ng-container
+              *ngIf="!email.errors['required'] && email.errors['email']">
+              Invalid email address
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="input">
+      <label for="password">Password</label>
+      <input
+        pInputText
+        type="password"
+        [style]="{'width': '100%'}"
+        placeholder="Password"
+        id="password"
+        formControlName="password" />
+      <div class="error">
+        <ng-container *ngIf="form.get('password') as password">
+          <ng-container *ngIf="password.dirty && password.errors">
+            <ng-container *ngIf="password.errors['required']">
+              This field is required
+            </ng-container>
+            <ng-container
+              *ngIf="!password.errors['required'] && password.errors['minlength']">
+              Minimum length is 8
+            </ng-container>
+            <ng-container
+              *ngIf="!password.errors['required'] && !password.errors['minlength'] && password.errors['password']">
+              Needs at least one uppercase letter
+            </ng-container>
+          </ng-container>
+        </ng-container>
+      </div>
+    </div>
+    <div class="submit">
+      <button
+        pButton
+        type="submit"
+        [class.loading]="loading"
+        [loading]="loading"
+        class="p-button">
+        <ng-container *ngIf="!loading">
+          <div>Sign up</div>
+        </ng-container>
+      </button>
+    </div>
+    <app-or-divider></app-or-divider>
+    <button
+      (click)="signupGoogle()"
+      type="button"
+      pButton
+      class="p-button p-button-outlined auth-button">
+      <svg
+        class="google"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 326667 333333"
+        shape-rendering="geometricPrecision"
+        text-rendering="geometricPrecision"
+        image-rendering="optimizeQuality"
+        fill-rule="evenodd"
+        clip-rule="evenodd">
+        <path
+          d="M326667 170370c0-13704-1112-23704-3518-34074H166667v61851h91851c-1851 15371-11851 38519-34074 54074l-311 2071 49476 38329 3428 342c31481-29074 49630-71852 49630-122593m0 0z"
+          fill="#4285f4" />
+        <path
+          d="M166667 333333c44999 0 82776-14815 110370-40370l-52593-40742c-14074 9815-32963 16667-57777 16667-44074 0-81481-29073-94816-69258l-1954 166-51447 39815-673 1870c27407 54444 83704 91852 148890 91852z"
+          fill="#34a853" />
+        <path
+          d="M71851 199630c-3518-10370-5555-21482-5555-32963 0-11482 2036-22593 5370-32963l-93-2209-52091-40455-1704 811C6482 114444 1 139814 1 166666s6482 52221 17777 74814l54074-41851m0 0z"
+          fill="#fbbc04" />
+        <path
+          d="M166667 64444c31296 0 52406 13519 64444 24816l47037-45926C249260 16482 211666 1 166667 1 101481 1 45185 37408 17777 91852l53889 41853c13520-40185 50927-69260 95001-69260m0 0z"
+          fill="#ea4335" /></svg
+      >Sign up with Google
+    </button>
+    <div class="separator"></div>
+  </form>
+  <div class="help">
+    <div class="question">Already have an account?</div>
+    <div class="link" routerLink="/auth/login">Log in here</div>
+  </div>
+</div>

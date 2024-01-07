@@ -1,0 +1,29 @@
+<div class="post">
+  <div class="top">
+    <ng-container *ngIf="forum">
+      <div>{{post.forum.name}}</div>
+      <div class="sphere"></div>
+    </ng-container>
+    <div class="clickable" [routerLink]="['/profile', post.user.username]">
+      {{post.user.username}}
+    </div>
+    <div class="sphere"></div>
+    <div>{{post.createdAt | timeAgo}}</div>
+  </div>
+  <div class="body">
+    <div class="category" *ngIf="post.category">{{post.category.name}}</div>
+    <div
+      class="title clickable"
+      routerLink="/forums/{{post.forum.id}}/posts/{{post.id}}">
+      {{post.title}}
+    </div>
+  </div>
+  <div class="bottom">
+    <app-like [post]="post" [authState]="authState"></app-like>
+    <div class="comments">
+      <ng-icon name="jamMessageWritingF" size="1.2rem"></ng-icon>
+      {{post.comments.length }}
+      <div class="desktop">comments</div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,22 @@
+<div class="card">
+  <div class="home" *ngIf="authState$ | async as authState">
+    <ng-container *ngIf="trending$ | async as trending">
+      <div class="posts">
+        <h3>Latest posts</h3>
+        <ng-container *ngFor="let post of trending.latestPosts">
+          <app-post [authState]="authState" [post]="post"></app-post>
+        </ng-container>
+      </div>
+      <div class="comments">
+        <h3>Latest comments</h3>
+        <div class="comments-helper">
+          <ng-container *ngFor="let comment of trending.latestComments">
+            <app-comment
+              [authState]="authState"
+              [comment]="comment"></app-comment>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

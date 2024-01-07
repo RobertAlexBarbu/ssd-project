@@ -1,0 +1,33 @@
+<ng-container *ngIf="authState$ | async as authState">
+  <div class="card" *ngIf="profileSubject$ | async as profile$">
+    <ng-container *ngIf="profile$ | async as profile">
+      <div class="page">
+        <div class="profile mb-5 mt-5">
+          <app-profile-picture
+            [authState]="authState"
+            [user]="profile.user"></app-profile-picture>
+          <div class="profile-description text-lg">
+            <div>{{profile.user.username}}</div>
+            <div>Joined Forumly {{profile.user.createdAt | timeAgo}}</div>
+            <div>
+              Role:
+              <span class="font-bold"
+                >{{profile.user.role.name | uppercase}}</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <div class="posts mt-5 mb-5">
+          <div class="text-lg">{{profile.user.username}}'s posts:</div>
+          <ng-container *ngFor="let post of profile.posts;">
+            <app-post
+              [forum]="true"
+              [authState]="authState"
+              [post]="post"></app-post>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</ng-container>

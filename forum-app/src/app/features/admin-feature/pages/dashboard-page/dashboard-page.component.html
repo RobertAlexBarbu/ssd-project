@@ -1,0 +1,21 @@
+<div class="card">
+  <div class="top">
+    <h3 class="desktop">Dashboard</h3>
+    <button
+      [routerLinkActiveOptions]="{exact: true}"
+      routerLinkActive="active-link"
+      pButton
+      class="smaller p-button p-button-text p-button-sm"
+      routerLink="/admin">
+      Admins
+    </button>
+    <button
+      routerLinkActive="active-link"
+      pButton
+      class="smaller p-button p-button-text p-button-sm"
+      routerLink="/admin/statistics">
+      Statistics
+    </button>
+  </div>
+  <router-outlet></router-outlet>
+</div>
