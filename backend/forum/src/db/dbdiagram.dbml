@@ -1,0 +1,53 @@
+Table users { // ban, delete
+  id integer [pk]
+  name varchar
+  email varchar
+  password_hash varchar
+  password_salt varchar
+  created_at timestamp
+  role_id integer [ref:> roles.id]
+}
+
+Table roles {
+  id integer [pk]
+  name varchar
+}
+
+Table forums { // addOne, getALLwithInfo, getOneWithPosts, updateOne
+  id integer [pk]
+  name varchar
+  image_id varchar [ref:> images.id]
+}
+
+Table images {
+  id integer [pk]
+  uuid varchar
+}
+
+Table categories { // addOne/Multiple
+  id integer [pk]
+  name varchar
+  color varchar
+  forum_id integer [ref:> forums.id]
+}
+
+Table posts { // addOne, getOneWithReplies
+  id integer [pk]
+  name varchar
+  created_at timestamp
+  category_id integer [ref:> categories.id]
+  forum_id integer [ref:> forums.id]
+  user_id integer [ref:> users.id]
+}
+
+Table replies { // addOne
+  id integer [pk]
+  content varchar
+  post_id integer [ref:> posts.id]
+  user_id integer [ref:> users.id]
+  reply_id integer [ref:> replies.id]
+}
+
+// forums/forum_id
+// posts/post_id
+// replies/reply_id
