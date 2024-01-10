@@ -14,7 +14,7 @@
   --text-gray: #2f2f2f;
   --md-min-width: 768px;
   --lg-min-width: 1024;
-  --box-shadow: #171717 0px 0px 16px;
+  --box-shadow: #141c2b 2px 2px 5px;
   --radius: 10px;
 }
 html {
@@ -34,7 +34,7 @@ body {
 }
 @media (min-width: 768px) {
   body {
-    background-color: #171717;
+    background-color: #ebeaeb;
   }
 }
 .desktop {
@@ -161,7 +161,7 @@ h2 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  row-gap: 4px;
+  row-gap: 6px;
 }
 .error {
   min-height: 1.1rem;
@@ -200,8 +200,8 @@ label {
 /* FORM STYLES END */
 
 .loading {
-  background-color: #3B82F670;
-  border-color: #3B82F670;
+  background-color: #183664;
+  border-color: #2f4a74;
 }
 
 .p-tooltip {
