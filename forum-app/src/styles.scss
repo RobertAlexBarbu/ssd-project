@@ -7,14 +7,14 @@
 
 
 :root {
-  --border: #E0E0E0;
-  --base: #FEFEFE;
+  --border: #ebeaeb;
+  --base: #ebeaeb;
   --error: #dc2626;
-  --base-text: #212121;
-  --text-gray: #737373;
+  --base-text: #183664;
+  --text-gray: #2f2f2f;
   --md-min-width: 768px;
   --lg-min-width: 1024;
-  --box-shadow: rgba(149, 157, 165, 0.1) 0px 0px 16px;
+  --box-shadow: #171717 0px 0px 16px;
   --radius: 15px;
 }
 html {
@@ -57,7 +57,7 @@ body {
 
 /* BUTTON STYLES */
 button {
-  font-weight: 600;
+  font-weight: 700;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
   font-size: 1rem;
