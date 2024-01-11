@@ -21,14 +21,16 @@
     </div>
   </ng-container>
 
-  <button pButton class="p-button p-button-rounded" id="file-btn-label">
-    <label for="file-btn" id="inner-label">
-      <ng-icon name="jamCameraF" size="2rem"></ng-icon
-    ></label>
-  </button>
-  <input
-    type="file"
-    id="file-btn"
-    accept="image/*"
-    (change)="onUpload($event)" />
+  <ng-container *ngIf="authState.id === user.id">
+    <button pButton class="p-button p-button-rounded" id="file-btn-label">
+      <label for="file-btn" id="inner-label">
+        <ng-icon name="jamCameraF" size="2rem"></ng-icon
+      ></label>
+    </button>
+    <input
+      type="file"
+      id="file-btn"
+      accept="image/*"
+      (change)="onUpload($event)" />
+  </ng-container>
 </div>
